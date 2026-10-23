@@ -9,6 +9,11 @@
     <!-- Título de la pestaña -->
     <title>Formularios - Seccional Retiro</title>
 
+    <!-- Tipografía institucional -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <!-- Vinculación con la hoja de estilos CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -26,7 +31,7 @@
         </div>
 
         <!-- Catálogo de formularios -->
-        <section class="catalogo-tarjetas" id="catalogoFormularios">
+        <section class="catalogo-tarjetas catalogo-formularios" id="catalogoFormularios">
 
             <!-- Formulario de afiliación a Unión Ferroviaria -->
             <a href="assets/formularios/afiliacion-union-ferroviaria.pdf" class="tarjeta-catalogo" target="_blank"
@@ -315,7 +320,7 @@
                 const nombre = tarjeta.textContent.toLowerCase();
 
                 if (nombre.includes(texto)) {
-                    tarjeta.style.display = "flex";
+                    tarjeta.style.display = "";
                     encontrados++;
                 } else {
                     tarjeta.style.display = "none";

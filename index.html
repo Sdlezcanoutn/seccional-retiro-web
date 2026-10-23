@@ -9,8 +9,16 @@
     <!-- Título que aparece en la pestaña del navegador -->
     <title>Seccional Retiro</title>
 
+    <!-- Tipografía institucional -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <!-- Vinculación con la hoja de estilos CSS -->
     <link rel="stylesheet" href="styles.css">
+
+    <!-- Biblioteca de íconos Lucide -->
+    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
 </head>
 
 <body>
@@ -31,31 +39,65 @@
         <section class="secciones-principales">
 
             <a href="afiliacionyempadronamiento.html" class="tarjeta tarjeta-ancha">
-                Afiliación y empadronamiento
+                <span class="icono-tarjeta">
+                    <i data-lucide="users"></i>
+                </span>
+                <span>Afiliación y empadronamiento</span>
+                <i data-lucide="chevron-right" class="flecha-tarjeta"></i>
             </a>
 
-            <a href="beneficios.html" class="tarjeta">Beneficios</a>
+            <a href="beneficios.html" class="tarjeta">
+                <span class="icono-tarjeta">
+                    <i data-lucide="gift"></i>
+                </span>
+                <span>Beneficios</span>
+            </a>
 
-            <a href="turismo.html" class="tarjeta">Turismo</a>
+            <a href="turismo.html" class="tarjeta">
+                <span class="icono-tarjeta">
+                    <i data-lucide="luggage"></i>
+                </span>
+                <span>Turismo</span>
+            </a>
 
-            <a href="formularios.html" class="tarjeta">Formularios</a>
+            <a href="formularios.html" class="tarjeta">
+                <span class="icono-tarjeta">
+                    <i data-lucide="file-text"></i>
+                </span>
+                <span>Formularios</span>
+            </a>
 
-            <a href="newsletters.html" class="tarjeta">Newsletters</a>
+            <a href="newsletters.html" class="tarjeta">
+                <span class="icono-tarjeta">
+                    <i data-lucide="newspaper"></i>
+                </span>
+                <span>Newsletters</span>
+            </a>
 
-
-            <!-- Acceso a las oficinas sindicales -->
-            <a href="oficinas.html" class="tarjeta tarjeta-ancha">Oficinas sindicales</a>
+            <a href="oficinas.html" class="tarjeta tarjeta-ancha">
+                <span class="icono-tarjeta">
+                    <i data-lucide="building-2"></i>
+                </span>
+                <span>Oficinas sindicales</span>
+                <i data-lucide="chevron-right" class="flecha-tarjeta"></i>
+            </a>
 
         </section>
-
     </main>
-
 
     <!-- Pie de página -->
     <footer class="pie-pagina">
         <p>© Seccional Retiro</p>
     </footer>
 
+    <!-- Activación de los íconos Lucide -->
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+        });
+    </script>
 
 </body>
 

@@ -9,8 +9,9 @@
     --arena: #c1b5a4;
     --gris: #9ca2a5;
     --fondo-suave: #f5f8f5;
+    --fondo-pagina: #f8faf8;
+    --borde-suave: #e2e9e2;
 }
-
 
 /* ========================================
    2. ESTILOS GENERALES
@@ -27,9 +28,9 @@
 body {
     margin: 0;
     padding: 24px;
-    background-color: var(--blanco);
+    background-color: var(--fondo-pagina);
     color: var(--carbon);
-    font-family: Arial, sans-serif;
+    font-family: 'Montserrat', Arial, sans-serif;
 }
 
 /* Centrado del contenido principal */
@@ -48,7 +49,6 @@ main p {
     color: var(--carbon);
     line-height: 1.5;
 }
-
 
 /* ========================================
    3. ENCABEZADO Y LOGOS
@@ -69,16 +69,15 @@ main p {
 
 /* Logo de Seccional Retiro */
 .encabezado img:first-child {
-    width: 90px;
-    height: 90px;
+    width: 103px;
+    height: 103px;
 }
 
 /* Logo de Delicia Conducción */
 .encabezado img:last-child {
-    width: 105px;
-    height: 105px;
+    width: 100px;
+    height: 100px;
 }
-
 
 /* ========================================
    4. TARJETAS DE NAVEGACIÓN
@@ -111,19 +110,72 @@ main p {
     justify-content: center;
     align-items: center;
     padding: 12px;
-    border: 1px solid var(--arena);
-    border-radius: 14px;
+
+    border: 1px solid var(--borde-suave);
+    border-radius: 16px;
+
     background-color: var(--blanco);
     color: var(--verde);
+
     font-weight: bold;
     text-align: center;
     text-decoration: none;
-    transition: background-color 0.2s ease;
+
+    box-shadow: 0 3px 12px rgba(46, 100, 59, 0.08);
+
+    transition:
+        background-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
 }
 
 /* Tarjetas de acceso de la página principal */
 .tarjeta {
-    min-height: 100px;
+    min-height: 115px;
+}
+
+/* Distribución de los íconos en las tarjetas del inicio */
+.secciones-principales .tarjeta {
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Círculo decorativo de cada ícono */
+.icono-tarjeta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background-color: var(--fondo-suave);
+    color: var(--verde);
+}
+
+/* Tamaño de los íconos Lucide */
+.icono-tarjeta svg {
+    width: 24px;
+    height: 24px;
+    stroke-width: 2;
+}
+
+/* Flechas de las tarjetas anchas del inicio */
+.secciones-principales .flecha-tarjeta {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    margin-left: 0;
+    color: var(--verde);
+}
+
+/* Distribución equilibrada de las tarjetas anchas */
+.secciones-principales .tarjeta-ancha {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr) 18px;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
 }
 
 /* Tarjetas de beneficios y selección de trámites */
@@ -131,6 +183,20 @@ main p {
     flex-direction: column;
     height: 110px;
     font-size: 14px;
+}
+
+/* Altura adaptable de los catálogos especiales */
+.catalogo-afiliacion .tarjeta-catalogo,
+.catalogo-turismo .tarjeta-catalogo,
+.catalogo-formularios .tarjeta-catalogo {
+    height: auto;
+}
+
+/* Altura y separación compartidas */
+.catalogo-turismo .tarjeta-catalogo,
+.catalogo-formularios .tarjeta-catalogo {
+    min-height: 135px;
+    gap: 4px;
 }
 
 /* Tarjetas que ocupan las dos columnas */
@@ -148,12 +214,20 @@ main p {
     font-size: 24px;
 }
 
-/* Íconos SVG de Lucide */
+/* Íconos SVG de Lucide en los catálogos */
 .tarjeta-catalogo svg {
-    width: 24px;
-    height: 24px;
+    width: 44px;
+    height: 44px;
     flex-shrink: 0;
+
+    padding: 10px;
     margin-bottom: 8px;
+
+    border-radius: 50%;
+    background-color: var(--fondo-suave);
+    color: var(--verde);
+
+    stroke-width: 2;
 }
 
 /* Nombre de la institución debajo de cada trámite */
@@ -172,15 +246,62 @@ main p {
     font-size: 14px;
 }
 
-/* Cambio de fondo al pasar el mouse sobre una tarjeta */
+/* Efecto al pasar el mouse sobre las tarjetas */
 .tarjeta:hover,
 .tarjeta-catalogo:hover {
     background-color: var(--fondo-suave);
+    box-shadow: 0 6px 18px rgba(46, 100, 59, 0.14);
+    transform: translateY(-3px);
 }
 
+/* ========================================
+   5. ENLACES PARA VOLVER
+======================================== */
+
+/* Separación del enlace respecto del contenido */
+.enlace-volver {
+    margin-top: 32px;
+}
+
+/* Apariencia del enlace de regreso */
+.enlace-volver a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    color: var(--verde);
+    font-weight: 600;
+    text-decoration: none;
+
+    padding: 8px 12px;
+    border-radius: 8px;
+
+    transition: background-color 0.2s ease;
+}
+
+.enlace-volver a:hover {
+    background-color: var(--fondo-suave);
+}
 
 /* ========================================
-   5. DOCUMENTACIÓN Y FORMULARIOS
+   6. PIE DE PÁGINA
+======================================== */
+
+/* Apariencia general del pie de página */
+.pie-pagina {
+    margin-top: 24px;
+    color: var(--gris);
+    font-size: 13px;
+    text-align: center;
+}
+
+/* Separación del texto del pie de página */
+.pie-pagina p {
+    margin: 8px 0;
+}
+
+/* ========================================
+   7. DOCUMENTACIÓN Y FORMULARIOS
 ======================================== */
 
 /* Ancho y separación de los bloques de trámite */
@@ -190,12 +311,12 @@ main p {
     margin: 28px auto;
 }
 
-/* Recuadro que contiene los requisitos */
 .documentacion-tramite {
-    padding: 16px 20px;
-    background-color: var(--fondo-suave);
-    border: 1px solid var(--arena);
-    border-radius: 14px;
+    padding: 20px;
+    background-color: var(--blanco);
+    border: 1px solid var(--borde-suave);
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
     text-align: left;
 }
 
@@ -237,7 +358,10 @@ main p {
 
 /* Botón que permite abrir el formulario PDF */
 .formulario-tramite a {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
     margin-top: 10px;
     padding: 12px 18px;
     background-color: var(--verde);
@@ -255,40 +379,23 @@ main p {
 
 
 /* ========================================
-   6. ENLACES PARA VOLVER
+   8. AFILIACIÓN Y EMPADRONAMIENTO
 ======================================== */
 
-/* Separación del enlace respecto del contenido */
-.enlace-volver {
-    margin-top: 32px;
+.catalogo-afiliacion .tarjeta-catalogo {
+    min-height: 145px;
+    gap: 6px;
+    padding: 14px 8px;
 }
 
-/* Apariencia del enlace de regreso */
-.enlace-volver a {
-    color: var(--verde);
-    text-decoration: underline;
-}
-
-
-/* ========================================
-   7. PIE DE PÁGINA
-======================================== */
-
-/* Apariencia general del pie de página */
-.pie-pagina {
-    margin-top: 24px;
-    color: var(--gris);
-    font-size: 13px;
-    text-align: center;
-}
-
-/* Separación del texto del pie de página */
-.pie-pagina p {
-    margin: 8px 0;
+.catalogo-afiliacion .tarjeta-catalogo small {
+    font-size: 11px;
+    line-height: 1.4;
+    font-weight: 500;
 }
 
 /* ========================================
-   8. GALERÍA DE TURISMO
+   9. GALERÍA DE TURISMO
 ======================================== */
 
 /* Galería con desplazamiento horizontal */
@@ -313,9 +420,16 @@ main p {
     scroll-snap-align: start;
 }
 
+
 /* ========================================
-   9. BUSCADOR DE FORMULARIOS
+   10. BUSCADOR DE FORMULARIOS
 ======================================== */
+
+/* Tarjetas del catálogo de Formularios */
+.catalogo-formularios .tarjeta-catalogo {
+    padding: 14px 10px;
+    line-height: 1.4;
+}
 
 .buscador-formularios {
     max-width: 420px;
@@ -337,10 +451,27 @@ main p {
     margin: 24px auto;
 }
 
-
 /* ========================================
-   10. PORTADA DEL NEWSLETTER
+   11. PORTADA DEL NEWSLETTER
 ======================================== */
+
+/* Recuadro de la última edición del newsletter */
+.newsletter-destacado {
+    background-color: var(--blanco);
+    border: 1px solid var(--borde-suave);
+    border-radius: 16px;
+    padding: 18px;
+
+    box-shadow: 0 3px 12px rgba(46, 100, 59, 0.08);
+}
+
+/* Título de la última edición */
+.newsletter-destacado h2 {
+    text-align: center;
+    font-size: 17px;
+    line-height: 1.4;
+    margin-bottom: 16px;
+}
 
 /* Imagen de portada de la última edición */
 .portada-newsletter {
@@ -350,20 +481,33 @@ main p {
     border-radius: 10px;
 }
 
+/* Título de las ediciones anteriores */
+.titulo-ediciones {
+    margin: 26px 0 0;
+    color: var(--verde);
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+}
+
 
 /* ========================================
-   11. OFICINAS SINDICALES
+   12. OFICINAS SINDICALES
 ======================================== */
 
-/* Ancho del catálogo con mapas */
+/* Distribución de las oficinas sindicales */
 .catalogo-mapas {
     max-width: 600px;
 }
 
-/* Adaptación de las tarjetas existentes */
+/* Tarjetas de las oficinas sindicales */
 .catalogo-mapas .tarjeta-catalogo {
+    display: grid;
+    grid-template-rows: auto 1fr 130px;
+    align-items: start;
     height: auto;
-    gap: 8px;
+    gap: 10px;
+    padding: 14px 10px;
 }
 
 /* Nombre de cada oficina */
@@ -388,9 +532,8 @@ main p {
     border-radius: 8px;
 }
 
-
 /* ========================================
-   12. DISEÑO RESPONSIVE
+   13. DISEÑO RESPONSIVE
 ======================================== */
 
 /* Celulares pequeños */
@@ -399,6 +542,11 @@ main p {
     /* Aprovechar mejor el ancho de pantalla */
     body {
         padding: 16px;
+    }
+
+    /* Ajustar los títulos en celulares pequeños */
+    h1 {
+        font-size: 26px;
     }
 
     /* Mantener dos columnas con una separación adecuada */
