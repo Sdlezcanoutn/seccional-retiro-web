@@ -65,7 +65,160 @@ main p {
 }
 
 /* ========================================
-   3. ENCABEZADO Y LOGOS
+   MENÚ DE NAVEGACIÓN COMPARTIDO
+======================================== */
+
+/* Contenedor del menú */
+#menu-sitio {
+    max-width: 900px;
+    margin: 0 auto 14px;
+}
+
+/* Navegación principal */
+.navegacion-sitio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 32px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* Menú de computadora */
+.menu-escritorio {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+/* Enlaces */
+.navegacion-sitio a {
+    color: var(--carbon, #334547);
+    text-decoration: none;
+}
+
+.navegacion-sitio a:hover,
+.navegacion-sitio a[aria-current="page"] {
+    color: var(--verde, #2e643b);
+}
+
+/* Menú de celular */
+.menu-movil {
+    position: relative;
+    display: none;
+}
+
+.menu-movil summary {
+    cursor: pointer;
+    list-style: none;
+}
+
+.menu-movil summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Opciones desplegables */
+.menu-opciones {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    z-index: 40;
+
+    display: flex;
+    flex-direction: column;
+    min-width: 225px;
+    padding: 6px;
+
+    background: var(--blanco, #ffffff);
+    border: 1px solid var(--borde-suave, #e2e9e2);
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.09);
+}
+
+.menu-opciones a {
+    display: block;
+    padding: 11px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+}
+
+.menu-opciones a:hover {
+    background: var(--fondo-suave, #f5f8f5);
+}
+
+/* ========================================
+   3. MENÚ RESPONSIVE
+======================================== */
+
+@media (max-width: 600px) {
+
+    /* Ocultar navegación en el inicio */
+    .pagina-inicio #menu-sitio {
+        display: none;
+    }
+
+    /* Ubicar hamburguesa a la izquierda del título */
+    body:not(.pagina-inicio) {
+        position: relative;
+    }
+
+    body:not(.pagina-inicio) #menu-sitio {
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin: 0;
+        z-index: 30;
+    }
+
+    body:not(.pagina-inicio) .navegacion-sitio {
+        justify-content: flex-start;
+    }
+
+    body:not(.pagina-inicio) main>h1:first-child {
+        padding: 0 40px;
+    }
+
+    /* Ocultar enlaces horizontales */
+    .menu-escritorio {
+        display: none;
+    }
+
+    /* Mostrar hamburguesa */
+    .menu-movil {
+        display: block;
+    }
+
+    .menu-movil summary {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        color: var(--verde, #2e643b);
+    }
+
+    /* Tres líneas decrecientes */
+    .icono-hamburguesa {
+        display: block;
+        width: 25px;
+        height: 18px;
+
+        background:
+            linear-gradient(#2e643b, #2e643b) left top / 25px 2px no-repeat,
+            linear-gradient(#2e643b, #2e643b) left center / 18px 2px no-repeat,
+            linear-gradient(#2e643b, #2e643b) left bottom / 11px 2px no-repeat;
+    }
+
+    .menu-movil .menu-opciones {
+        min-width: 235px;
+        max-width: calc(100vw - 32px);
+    }
+}
+
+/* ========================================
+   4. ENCABEZADO Y LOGOS
 ======================================== */
 
 /* Distribución de los logos institucionales */
@@ -94,7 +247,7 @@ main p {
 }
 
 /* ========================================
-   4. TARJETAS DE NAVEGACIÓN
+   5. TARJETAS DE NAVEGACIÓN
 ======================================== */
 
 /* Cuadrículas utilizadas en el inicio y en los catálogos */
@@ -271,7 +424,7 @@ main p {
 }
 
 /* ========================================
-   5. ENLACES PARA VOLVER
+   6. ENLACES PARA VOLVER
 ======================================== */
 
 /* Separación del enlace respecto del contenido */
@@ -300,7 +453,7 @@ main p {
 }
 
 /* ========================================
-   6. PIE DE PÁGINA
+   7. PIE DE PÁGINA
 ======================================== */
 
 /* Apariencia general del pie de página */
@@ -317,7 +470,7 @@ main p {
 }
 
 /* ========================================
-   7. DOCUMENTACIÓN Y FORMULARIOS
+   8. DOCUMENTACIÓN Y FORMULARIOS
 ======================================== */
 
 /* Ancho y separación de los bloques de trámite */
@@ -393,9 +546,8 @@ main p {
     background-color: #234d2e;
 }
 
-
 /* ========================================
-   8. AFILIACIÓN Y EMPADRONAMIENTO
+   9. AFILIACIÓN Y EMPADRONAMIENTO
 ======================================== */
 
 .catalogo-afiliacion .tarjeta-catalogo {
@@ -411,7 +563,7 @@ main p {
 }
 
 /* ========================================
-   9. GALERÍA DE TURISMO
+   10. GALERÍA DE TURISMO
 ======================================== */
 
 /* Galería con desplazamiento horizontal */
@@ -438,7 +590,7 @@ main p {
 
 
 /* ========================================
-   10. BUSCADOR DE FORMULARIOS
+   11. BUSCADOR DE FORMULARIOS
 ======================================== */
 
 /* Tarjetas del catálogo de Formularios */
@@ -468,7 +620,7 @@ main p {
 }
 
 /* ========================================
-   11. PORTADA DEL NEWSLETTER
+   12. PORTADA DEL NEWSLETTER
 ======================================== */
 
 /* Recuadro de la última edición del newsletter */
@@ -506,9 +658,8 @@ main p {
     text-align: center;
 }
 
-
 /* ========================================
-   12. OFICINAS SINDICALES
+   13. OFICINAS SINDICALES
 ======================================== */
 
 /* Distribución de las oficinas sindicales */
@@ -549,7 +700,7 @@ main p {
 }
 
 /* ========================================
-   13. DISEÑO RESPONSIVE
+   14. DISEÑO RESPONSIVE
 ======================================== */
 
 /* Portada adaptada a celulares */
