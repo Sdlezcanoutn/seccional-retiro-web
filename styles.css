@@ -703,6 +703,20 @@ main p {
    14. DISEÑO RESPONSIVE
 ======================================== */
 
+/* Beneficios: tres columnas en computadora */
+@media (min-width: 601px) {
+    .catalogo-beneficios {
+        max-width: 900px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+    }
+
+    /* Servicio de sepelio ocupa toda la última fila */
+    .catalogo-beneficios .tarjeta-sepelio {
+        grid-column: 1 / -1;
+    }
+}
+
 /* Portada adaptada a celulares */
 @media (max-width: 600px) {
     .secciones-principales {
