@@ -703,8 +703,11 @@ main p {
    14. DISEÑO RESPONSIVE
 ======================================== */
 
-/* Beneficios: tres columnas en computadora */
+
+/* Distribución de catálogos en computadora */
 @media (min-width: 601px) {
+
+    /* Beneficios: tres columnas */
     .catalogo-beneficios {
         max-width: 900px;
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -715,7 +718,15 @@ main p {
     .catalogo-beneficios .tarjeta-sepelio {
         grid-column: 1 / -1;
     }
+
+    /* Formularios: cuatro columnas */
+    .catalogo-formularios {
+        max-width: 900px;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 18px;
+    }
 }
+
 
 /* Portada adaptada a celulares */
 @media (max-width: 600px) {
