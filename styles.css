@@ -50,6 +50,20 @@ main p {
     line-height: 1.5;
 }
 
+/* Espaciado del título y subtítulo de la portada */
+.pagina-inicio h1 {
+    margin: 18px 0 4px;
+}
+
+.pagina-inicio main>p {
+    margin: 0;
+}
+
+/* Ocultar el salto de línea en computadora */
+.salto-mobile {
+    display: none;
+}
+
 /* ========================================
    3. ENCABEZADO Y LOGOS
 ======================================== */
@@ -95,7 +109,7 @@ main p {
     grid-template-columns: repeat(4, minmax(0, 1fr));
     max-width: 900px;
     gap: 16px;
-    margin: 32px auto 0;
+    margin: 20px auto 0;
 }
 
 /* Distribución de las tarjetas de beneficios y trámites */
@@ -543,6 +557,18 @@ main p {
     .secciones-principales {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+
+    /* Subtítulo de la portada en celulares */
+    .pagina-inicio main>p {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+    /* Mostrar el salto de línea en celulares */
+    .salto-mobile {
+        display: initial;
+    }
+
 }
 
 /* Celulares pequeños */
