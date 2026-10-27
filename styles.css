@@ -88,17 +88,19 @@ main p {
 .catalogo-tarjetas {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    max-width: 420px;
 }
 
 /* Distribución de las tarjetas de la página principal */
 .secciones-principales {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    max-width: 900px;
     gap: 16px;
     margin: 32px auto 0;
 }
 
 /* Distribución de las tarjetas de beneficios y trámites */
 .catalogo-tarjetas {
+    max-width: 420px;
     gap: 12px;
     margin: 28px auto;
 }
@@ -535,6 +537,13 @@ main p {
 /* ========================================
    13. DISEÑO RESPONSIVE
 ======================================== */
+
+/* Portada adaptada a celulares */
+@media (max-width: 600px) {
+    .secciones-principales {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
 
 /* Celulares pequeños */
 @media (max-width: 360px) {
