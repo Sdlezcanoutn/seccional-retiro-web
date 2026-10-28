@@ -1,5 +1,5 @@
 /* ========================================
-   1. COLORES INSTITUCIONALES
+   1. VARIABLES GENERALES
 ======================================== */
 
 :root {
@@ -11,6 +11,11 @@
     --fondo-suave: #f5f8f5;
     --fondo-pagina: #f8faf8;
     --borde-suave: #e2e9e2;
+    --verde-hover: #234d2e;
+
+    /* Anchos máximos compartidos */
+    --ancho-contenido: 420px;
+    --ancho-amplio: 900px;
 }
 
 /* ========================================
@@ -50,27 +55,21 @@ main p {
     line-height: 1.5;
 }
 
-/* Espaciado del título y subtítulo de la portada */
-.pagina-inicio h1 {
-    margin: 18px 0 4px;
-}
-
-.pagina-inicio main>p {
-    margin: 0;
-}
-
-/* Ocultar el salto de línea en computadora */
-.salto-mobile {
-    display: none;
+/* Apariencia compartida de los recuadros informativos */
+.newsletter-destacado,
+.documentacion-tramite {
+    background-color: var(--blanco);
+    border: 1px solid var(--borde-suave);
+    border-radius: 16px;
 }
 
 /* ========================================
-   MENÚ DE NAVEGACIÓN COMPARTIDO
+   3. NAVEGACIÓN PRINCIPAL
 ======================================== */
 
 /* Contenedor del menú */
 #menu-sitio {
-    max-width: 900px;
+    max-width: var(--ancho-amplio);
     margin: 0 auto 14px;
 }
 
@@ -95,13 +94,13 @@ main p {
 
 /* Enlaces */
 .navegacion-sitio a {
-    color: var(--carbon, #334547);
+    color: var(--carbon);
     text-decoration: none;
 }
 
 .navegacion-sitio a:hover,
 .navegacion-sitio a[aria-current="page"] {
-    color: var(--verde, #2e643b);
+    color: var(--verde);
 }
 
 /* Menú de celular */
@@ -131,8 +130,8 @@ main p {
     min-width: 225px;
     padding: 6px;
 
-    background: var(--blanco, #ffffff);
-    border: 1px solid var(--borde-suave, #e2e9e2);
+    background: var(--blanco);
+    border: 1px solid var(--borde-suave);
     border-radius: 10px;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.09);
 }
@@ -145,76 +144,7 @@ main p {
 }
 
 .menu-opciones a:hover {
-    background: var(--fondo-suave, #f5f8f5);
-}
-
-/* ========================================
-   3. MENÚ RESPONSIVE
-======================================== */
-
-@media (max-width: 600px) {
-
-    /* Ocultar navegación en el inicio */
-    .pagina-inicio #menu-sitio {
-        display: none;
-    }
-
-    /* Ubicar hamburguesa a la izquierda del título */
-    body:not(.pagina-inicio) {
-        position: relative;
-    }
-
-    body:not(.pagina-inicio) #menu-sitio {
-        position: absolute;
-        top: 0;
-        left: 0;
-        margin: 0;
-        z-index: 30;
-    }
-
-    body:not(.pagina-inicio) .navegacion-sitio {
-        justify-content: flex-start;
-    }
-
-    body:not(.pagina-inicio) main>h1:first-child {
-        padding: 0 40px;
-    }
-
-    /* Ocultar enlaces horizontales */
-    .menu-escritorio {
-        display: none;
-    }
-
-    /* Mostrar hamburguesa */
-    .menu-movil {
-        display: block;
-    }
-
-    .menu-movil summary {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 36px;
-        height: 36px;
-        color: var(--verde, #2e643b);
-    }
-
-    /* Tres líneas decrecientes */
-    .icono-hamburguesa {
-        display: block;
-        width: 25px;
-        height: 18px;
-
-        background:
-            linear-gradient(#2e643b, #2e643b) left top / 25px 2px no-repeat,
-            linear-gradient(#2e643b, #2e643b) left center / 18px 2px no-repeat,
-            linear-gradient(#2e643b, #2e643b) left bottom / 11px 2px no-repeat;
-    }
-
-    .menu-movil .menu-opciones {
-        min-width: 235px;
-        max-width: calc(100vw - 32px);
-    }
+    background: var(--fondo-suave);
 }
 
 /* ========================================
@@ -247,29 +177,26 @@ main p {
 }
 
 /* ========================================
-   5. TARJETAS DE NAVEGACIÓN
+   5. TARJETAS Y CATÁLOGOS
 ======================================== */
 
 /* Cuadrículas utilizadas en el inicio y en los catálogos */
 .secciones-principales,
 .catalogo-tarjetas {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-/* Distribución de las tarjetas de la página principal */
-.secciones-principales {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    max-width: 900px;
-    gap: 16px;
-    margin: 20px auto 0;
 }
 
 /* Distribución de las tarjetas de beneficios y trámites */
 .catalogo-tarjetas {
-    max-width: 420px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: var(--ancho-contenido);
     gap: 12px;
     margin: 28px auto;
+}
+
+/* Tarjetas que ocupan las dos columnas */
+.tarjeta-ancha {
+    grid-column: 1 / -1;
 }
 
 /* Apariencia compartida de todas las tarjetas */
@@ -298,55 +225,6 @@ main p {
         transform 0.2s ease;
 }
 
-/* Tarjetas de acceso de la página principal */
-.tarjeta {
-    min-height: 115px;
-}
-
-/* Distribución de los íconos en las tarjetas del inicio */
-.secciones-principales .tarjeta {
-    flex-direction: column;
-    gap: 10px;
-}
-
-/* Círculo decorativo de cada ícono */
-.icono-tarjeta {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 44px;
-    height: 44px;
-    flex-shrink: 0;
-    border-radius: 50%;
-    background-color: var(--fondo-suave);
-    color: var(--verde);
-}
-
-/* Tamaño de los íconos Lucide */
-.icono-tarjeta svg {
-    width: 24px;
-    height: 24px;
-    stroke-width: 2;
-}
-
-/* Flechas de las tarjetas anchas del inicio */
-.secciones-principales .flecha-tarjeta {
-    width: 18px;
-    height: 18px;
-    flex-shrink: 0;
-    margin-left: 0;
-    color: var(--verde);
-}
-
-/* Distribución equilibrada de las tarjetas anchas */
-.secciones-principales .tarjeta-ancha {
-    display: grid;
-    grid-template-columns: 44px minmax(0, 1fr) 18px;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 16px;
-}
-
 /* Tarjetas de beneficios y selección de trámites */
 .tarjeta-catalogo {
     flex-direction: column;
@@ -354,28 +232,19 @@ main p {
     font-size: 14px;
 }
 
-/* Altura adaptable de los catálogos especiales */
+
+/* Tarjetas de catálogos con altura adaptable */
 .catalogo-afiliacion .tarjeta-catalogo,
 .catalogo-turismo .tarjeta-catalogo,
 .catalogo-formularios .tarjeta-catalogo {
     height: auto;
 }
 
-/* Altura y separación compartidas */
+/* Ajustes compartidos de turismo y formularios */
 .catalogo-turismo .tarjeta-catalogo,
 .catalogo-formularios .tarjeta-catalogo {
     min-height: 135px;
     gap: 4px;
-}
-
-/* Tarjetas que ocupan las dos columnas */
-.tarjeta-ancha {
-    grid-column: 1 / -1;
-}
-
-/* Altura de las tarjetas anchas del inicio */
-.secciones-principales .tarjeta-ancha {
-    min-height: 60px;
 }
 
 /* Íconos representados mediante span */
@@ -383,21 +252,25 @@ main p {
     font-size: 24px;
 }
 
-/* Íconos SVG de Lucide en los catálogos */
-.tarjeta-catalogo svg {
+
+/* Apariencia compartida de los íconos circulares */
+.tarjeta-catalogo svg,
+.icono-tarjeta {
     width: 44px;
     height: 44px;
     flex-shrink: 0;
-
-    padding: 10px;
-    margin-bottom: 8px;
-
     border-radius: 50%;
     background-color: var(--fondo-suave);
     color: var(--verde);
+}
 
+/* Ajustes específicos de los íconos de catálogos */
+.tarjeta-catalogo svg {
+    padding: 10px;
+    margin-bottom: 8px;
     stroke-width: 2;
 }
+
 
 /* Nombre de la institución debajo de cada trámite */
 .tarjeta-catalogo small {
@@ -424,84 +297,93 @@ main p {
 }
 
 /* ========================================
-   6. ENLACES PARA VOLVER
+   6. PÁGINA DE INICIO
 ======================================== */
 
-/* Separación del enlace respecto del contenido */
-.enlace-volver {
-    margin-top: 32px;
+/* Espaciado del título y subtítulo de la portada */
+.pagina-inicio h1 {
+    margin: 18px 0 4px;
 }
 
-/* Apariencia del enlace de regreso */
-.enlace-volver a {
-    display: inline-flex;
+.pagina-inicio main>p {
+    margin: 0;
+}
+
+/* Ocultar el salto de línea en computadora */
+.salto-mobile {
+    display: none;
+}
+
+/* Distribución de las tarjetas de la página principal */
+.secciones-principales {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    max-width: var(--ancho-amplio);
+    gap: 16px;
+    margin: 20px auto 0;
+}
+
+/* Distribución y altura de las tarjetas anchas del inicio */
+.secciones-principales .tarjeta-ancha {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr) 18px;
     align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    min-height: 60px;
+}
+
+/* Tarjetas de acceso de la página principal */
+.tarjeta {
+    min-height: 115px;
+}
+
+/* Distribución de los íconos en las tarjetas del inicio */
+.secciones-principales .tarjeta {
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Distribución del ícono en las tarjetas del inicio */
+.icono-tarjeta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Tamaño de los íconos Lucide */
+.icono-tarjeta svg {
+    width: 24px;
+    height: 24px;
+    stroke-width: 2;
+}
+
+/* Flechas de las tarjetas anchas del inicio */
+.secciones-principales .flecha-tarjeta {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    color: var(--verde);
+}
+
+/* ========================================
+   7. AFILIACIÓN Y EMPADRONAMIENTO
+======================================== */
+
+.catalogo-afiliacion .tarjeta-catalogo {
+    min-height: 145px;
     gap: 6px;
-
-    color: var(--verde);
-    font-weight: 600;
-    text-decoration: none;
-
-    padding: 8px 12px;
-    border-radius: 8px;
-
-    transition: background-color 0.2s ease;
+    padding: 14px 8px;
 }
 
-.enlace-volver a:hover {
-    background-color: var(--fondo-suave);
+.catalogo-afiliacion .tarjeta-catalogo small {
+    font-size: 11px;
+    line-height: 1.4;
+    font-weight: 500;
 }
 
 /* ========================================
-   7. PIE DE PÁGINA
+   8. BENEFICIOS
 ======================================== */
-
-/* Apariencia general del pie de página */
-.pie-pagina {
-    margin-top: 24px;
-    color: var(--gris);
-    font-size: 13px;
-    text-align: center;
-}
-
-/* Separación del texto del pie de página */
-.pie-pagina p {
-    margin: 8px 0;
-}
-
-/* ========================================
-   8. DOCUMENTACIÓN Y FORMULARIOS
-======================================== */
-
-/* Ancho y separación de los bloques de trámite */
-.documentacion-tramite,
-.formulario-tramite {
-    max-width: 420px;
-    margin: 28px auto;
-}
-
-.documentacion-tramite {
-    padding: 20px;
-    background-color: var(--blanco);
-    border: 1px solid var(--borde-suave);
-    border-radius: 16px;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
-    text-align: left;
-}
-
-/* Título del recuadro de documentación */
-.documentacion-tramite h2 {
-    margin-top: 0;
-    color: var(--verde);
-    font-size: 18px;
-}
-
-/* Lista de documentación requerida */
-.documentacion-tramite ul {
-    margin-bottom: 0;
-    padding-left: 20px;
-    line-height: 1.6;
-}
 
 /* Recuadros de información de los beneficios */
 .pagina-beneficio .documentacion-tramite {
@@ -525,45 +407,8 @@ main p {
     margin-top: 8px;
 }
 
-/* Botón que permite abrir el formulario PDF */
-.formulario-tramite a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 10px;
-    padding: 12px 18px;
-    background-color: var(--verde);
-    color: var(--blanco);
-    border-radius: 10px;
-    font-weight: bold;
-    text-decoration: none;
-    transition: background-color 0.2s ease;
-}
-
-/* Cambio de color al pasar el mouse sobre el botón */
-.formulario-tramite a:hover {
-    background-color: #234d2e;
-}
-
 /* ========================================
-   9. AFILIACIÓN Y EMPADRONAMIENTO
-======================================== */
-
-.catalogo-afiliacion .tarjeta-catalogo {
-    min-height: 145px;
-    gap: 6px;
-    padding: 14px 8px;
-}
-
-.catalogo-afiliacion .tarjeta-catalogo small {
-    font-size: 11px;
-    line-height: 1.4;
-    font-weight: 500;
-}
-
-/* ========================================
-   10. GALERÍA DE TURISMO
+   9. TURISMO
 ======================================== */
 
 /* Galería con desplazamiento horizontal */
@@ -588,9 +433,8 @@ main p {
     scroll-snap-align: start;
 }
 
-
 /* ========================================
-   11. BUSCADOR DE FORMULARIOS
+   10. FORMULARIOS
 ======================================== */
 
 /* Tarjetas del catálogo de Formularios */
@@ -600,7 +444,7 @@ main p {
 }
 
 .buscador-formularios {
-    max-width: 420px;
+    max-width: var(--ancho-contenido);
     margin: 28px auto 0;
 }
 
@@ -620,16 +464,12 @@ main p {
 }
 
 /* ========================================
-   12. PORTADA DEL NEWSLETTER
+   11. NEWSLETTERS
 ======================================== */
 
 /* Recuadro de la última edición del newsletter */
 .newsletter-destacado {
-    background-color: var(--blanco);
-    border: 1px solid var(--borde-suave);
-    border-radius: 16px;
     padding: 18px;
-
     box-shadow: 0 3px 12px rgba(46, 100, 59, 0.08);
 }
 
@@ -659,7 +499,7 @@ main p {
 }
 
 /* ========================================
-   13. OFICINAS SINDICALES
+   12. OFICINAS SINDICALES
 ======================================== */
 
 /* Distribución de las oficinas sindicales */
@@ -700,18 +540,120 @@ main p {
 }
 
 /* ========================================
-   14. DISEÑO RESPONSIVE
+   13. DOCUMENTACIÓN Y PÁGINAS DE DETALLE
 ======================================== */
 
+/* Ancho y separación de los bloques de trámite */
+.documentacion-tramite,
+.formulario-tramite {
+    max-width: var(--ancho-contenido);
+    margin: 28px auto;
+}
+
+.documentacion-tramite {
+    padding: 20px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+    text-align: left;
+}
+
+/* Título del recuadro de documentación */
+.documentacion-tramite h2 {
+    margin-top: 0;
+    color: var(--verde);
+    font-size: 18px;
+}
+
+/* Lista de documentación requerida */
+.documentacion-tramite ul {
+    margin-bottom: 0;
+    padding-left: 20px;
+    line-height: 1.6;
+}
+
+/* Botón que permite abrir el formulario PDF */
+.formulario-tramite a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+    padding: 12px 18px;
+    background-color: var(--verde);
+    color: var(--blanco);
+    border-radius: 10px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+/* Cambio de color al pasar el mouse sobre el botón */
+.formulario-tramite a:hover {
+    background-color: var(--verde-hover);
+}
+
+/* ========================================
+   14. ENLACES PARA VOLVER
+======================================== */
+
+/* Separación del enlace respecto del contenido */
+.enlace-volver {
+    margin-top: 32px;
+}
+
+/* Apariencia del enlace de regreso */
+.enlace-volver a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    color: var(--verde);
+    font-weight: 600;
+    text-decoration: none;
+
+    padding: 8px 12px;
+    border-radius: 8px;
+
+    transition: background-color 0.2s ease;
+}
+
+.enlace-volver a:hover {
+    background-color: var(--fondo-suave);
+}
+
+/* ========================================
+   15. PIE DE PÁGINA
+======================================== */
+
+/* Apariencia general del pie de página */
+.pie-pagina {
+    margin-top: 24px;
+    color: var(--gris);
+    font-size: 13px;
+    text-align: center;
+}
+
+/* Separación del texto del pie de página */
+.pie-pagina p {
+    margin: 8px 0;
+}
+
+/* ========================================
+   16. DISEÑO RESPONSIVE
+======================================== */
 
 /* Distribución de catálogos en computadora */
 @media (min-width: 601px) {
 
+    /* Ancho y separación compartidos */
+    .catalogo-beneficios,
+    .catalogo-formularios {
+        max-width: var(--ancho-amplio);
+        gap: 18px;
+    }
+
     /* Beneficios: tres columnas */
     .catalogo-beneficios {
-        max-width: 900px;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 18px;
     }
 
     /* Servicio de sepelio ocupa toda la última fila */
@@ -721,71 +663,126 @@ main p {
 
     /* Formularios: cuatro columnas */
     .catalogo-formularios {
-        max-width: 900px;
         grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 18px;
     }
 }
 
 
-/* Portada adaptada a celulares */
+/* Diseño para celulares */
 @media (max-width: 600px) {
+
+    /* Portada: dos columnas */
     .secciones-principales {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    /* Subtítulo de la portada en celulares */
+    /* Subtítulo de la portada */
     .pagina-inicio main>p {
         font-size: 14px;
         line-height: 1.4;
     }
 
-    /* Mostrar el salto de línea en celulares */
+    /* Mostrar salto de línea en celulares */
     .salto-mobile {
         display: initial;
     }
 
+    /* Ocultar navegación en el inicio */
+    .pagina-inicio #menu-sitio {
+        display: none;
+    }
+
+    /* Posición del menú en páginas interiores */
+    body:not(.pagina-inicio) {
+        position: relative;
+    }
+
+    body:not(.pagina-inicio) #menu-sitio {
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin: 0;
+        z-index: 30;
+    }
+
+    body:not(.pagina-inicio) .navegacion-sitio {
+        justify-content: flex-start;
+    }
+
+    body:not(.pagina-inicio) main>h1:first-child {
+        padding: 0 40px;
+    }
+
+    /* Ocultar navegación horizontal */
+    .menu-escritorio {
+        display: none;
+    }
+
+    /* Mostrar menú hamburguesa */
+    .menu-movil {
+        display: block;
+    }
+
+    .menu-movil summary {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        color: var(--verde);
+    }
+
+    /* Ícono hamburguesa */
+    .icono-hamburguesa {
+        display: block;
+        width: 25px;
+        height: 18px;
+
+        background:
+            linear-gradient(var(--verde), var(--verde)) left top / 25px 2px no-repeat,
+            linear-gradient(var(--verde), var(--verde)) left center / 18px 2px no-repeat,
+            linear-gradient(var(--verde), var(--verde)) left bottom / 11px 2px no-repeat;
+    }
+
+    /* Opciones desplegables */
+    .menu-movil .menu-opciones {
+        min-width: 235px;
+        max-width: calc(100vw - 32px);
+    }
 }
 
-/* Celulares pequeños */
+/* Ajustes adicionales para celulares pequeños */
 @media (max-width: 360px) {
 
-    /* Aprovechar mejor el ancho de pantalla */
     body {
         padding: 16px;
     }
 
-    /* Ajustar los títulos en celulares pequeños */
     h1 {
         font-size: 26px;
     }
 
-    /* Mantener dos columnas con una separación adecuada */
     .secciones-principales,
     .catalogo-tarjetas {
         gap: 12px;
         width: 100%;
     }
 
-    /* Dar más espacio al contenido de las tarjetas */
     .tarjeta,
     .tarjeta-catalogo {
         padding: 8px;
     }
 
-    /* Ajustar el texto de los beneficios */
     .tarjeta-catalogo {
         font-size: 13px;
         min-height: 110px;
         height: auto;
     }
 
-    /* Mantener legibles los nombres de los beneficios */
     .tarjeta-catalogo .nombre-beneficio {
         font-size: 13px;
     }
 
-    /* Ajustar ligeramente los nombres de las instituciones */
     .tarjeta-catalogo small {
         font-size: 11px;
         line-height: 13px;
