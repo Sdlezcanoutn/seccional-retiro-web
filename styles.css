@@ -228,10 +228,10 @@ main p {
 /* Tarjetas de beneficios y selección de trámites */
 .tarjeta-catalogo {
     flex-direction: column;
-    height: 110px;
+    min-height: 110px;
+    height: auto;
     font-size: 14px;
 }
-
 
 /* Tarjetas de catálogos con altura adaptable */
 .catalogo-afiliacion .tarjeta-catalogo,
@@ -252,7 +252,6 @@ main p {
     font-size: 24px;
 }
 
-
 /* Apariencia compartida de los íconos circulares */
 .tarjeta-catalogo svg,
 .icono-tarjeta {
@@ -271,12 +270,12 @@ main p {
     stroke-width: 2;
 }
 
-
 /* Nombre de la institución debajo de cada trámite */
 .tarjeta-catalogo small {
+    display: block;
     font-size: 12px;
-    line-height: 14px;
-    margin-top: 2px;
+    line-height: 1.4;
+    margin-top: 8px;
 }
 
 /* Espacio uniforme para los nombres de los beneficios */
@@ -286,6 +285,18 @@ main p {
     justify-content: center;
     min-height: 24px;
     font-size: 14px;
+}
+
+/* Alineación uniforme de las tarjetas de Becas */
+.pagina-becas .tarjeta-catalogo {
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 16px 10px;
+}
+
+/* Íconos de Becas alineados */
+.pagina-becas .tarjeta-catalogo svg {
+    margin-bottom: 0;
 }
 
 /* Efecto al pasar el mouse sobre las tarjetas */
@@ -369,10 +380,12 @@ main p {
    7. AFILIACIÓN Y EMPADRONAMIENTO
 ======================================== */
 
+/* Tarjetas de Afiliación y Empadronamiento */
 .catalogo-afiliacion .tarjeta-catalogo {
-    min-height: 145px;
-    gap: 6px;
-    padding: 14px 8px;
+    justify-content: flex-start;
+    min-height: 0;
+    gap: 2px;
+    padding: 10px;
 }
 
 .catalogo-afiliacion .tarjeta-catalogo small {
@@ -433,14 +446,23 @@ main p {
     scroll-snap-align: start;
 }
 
+/* Presentación de las tarjetas de Turismo */
+.catalogo-turismo .tarjeta-catalogo {
+    justify-content: flex-start;
+    padding: 10px;
+    gap: 2px;
+}
+
 /* ========================================
    10. FORMULARIOS
 ======================================== */
 
 /* Tarjetas del catálogo de Formularios */
 .catalogo-formularios .tarjeta-catalogo {
+    justify-content: flex-start;
     padding: 14px 10px;
     line-height: 1.4;
+    gap: 4px;
 }
 
 .buscador-formularios {
@@ -448,6 +470,7 @@ main p {
     margin: 28px auto 0;
 }
 
+/* Campo de búsqueda de formularios */
 .buscador-formularios input {
     width: 100%;
     padding: 14px 16px;
@@ -455,8 +478,19 @@ main p {
     border-radius: 14px;
     background-color: var(--blanco);
     font: inherit;
-    outline-color: var(--verde);
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
 }
+
+/* Resaltado al seleccionar el buscador */
+.buscador-formularios input:focus {
+    border-color: var(--verde);
+    box-shadow: 0 0 0 4px rgba(46, 100, 59, 0.12);
+}
+
 
 .sin-resultados {
     text-align: center;
@@ -469,6 +503,8 @@ main p {
 
 /* Recuadro de la última edición del newsletter */
 .newsletter-destacado {
+    max-width: 700px;
+    margin: 28px auto;
     padding: 18px;
     box-shadow: 0 3px 12px rgba(46, 100, 59, 0.08);
 }
@@ -487,6 +523,34 @@ main p {
     width: 100%;
     height: auto;
     border-radius: 10px;
+}
+
+/* Distribución horizontal de la última edición */
+.enlace-newsletter-destacado {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 24px;
+
+    color: var(--verde);
+    text-decoration: none;
+}
+
+/* Acceso para leer la edición */
+.accion-newsletter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.accion-newsletter svg {
+    width: 36px;
+    height: 36px;
 }
 
 /* Título de las ediciones anteriores */
@@ -591,8 +655,65 @@ main p {
     background-color: var(--verde-hover);
 }
 
+
 /* ========================================
-   14. ENLACES PARA VOLVER
+   14. BOTÓN VOLVER ARRIBA
+======================================== */
+
+.boton-volver-arriba {
+    position: fixed;
+    right: 12px;
+    bottom: 12px;
+    z-index: 50;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+    padding: 0;
+
+    border: none;
+    border-radius: 50%;
+    background-color: var(--verde);
+    color: var(--blanco);
+
+    font-size: 25px;
+    font-weight: 500;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+    cursor: pointer;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease,
+        visibility 0.25s ease;
+}
+
+/* Mostrar el botón al bajar por la página */
+.boton-volver-arriba.visible {
+    opacity: 0.55;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.boton-volver-arriba:hover {
+    background-color: var(--verde-hover);
+}
+
+/* Respetar la configuración de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+    .boton-volver-arriba {
+        transition: none;
+    }
+}
+
+/* ========================================
+   15. ENLACES PARA VOLVER
 ======================================== */
 
 /* Separación del enlace respecto del contenido */
@@ -621,7 +742,7 @@ main p {
 }
 
 /* ========================================
-   15. PIE DE PÁGINA
+   16. PIE DE PÁGINA
 ======================================== */
 
 /* Apariencia general del pie de página */
@@ -638,7 +759,7 @@ main p {
 }
 
 /* ========================================
-   16. DISEÑO RESPONSIVE
+   17. DISEÑO RESPONSIVE
 ======================================== */
 
 /* Distribución de catálogos en computadora */
@@ -646,7 +767,8 @@ main p {
 
     /* Ancho y separación compartidos */
     .catalogo-beneficios,
-    .catalogo-formularios {
+    .catalogo-formularios,
+    .catalogo-newsletters {
         max-width: var(--ancho-amplio);
         gap: 18px;
     }
@@ -661,8 +783,9 @@ main p {
         grid-column: 1 / -1;
     }
 
-    /* Formularios: cuatro columnas */
-    .catalogo-formularios {
+    /* Formularios y Newsletters: cuatro columnas */
+    .catalogo-formularios,
+    .catalogo-newsletters {
         grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 }
@@ -709,8 +832,12 @@ main p {
         justify-content: flex-start;
     }
 
+    /* Títulos de las páginas interiores */
     body:not(.pagina-inicio) main>h1:first-child {
-        padding: 0 40px;
+        padding: 0 16px;
+        overflow-wrap: break-word;
+        font-size: clamp(24px, 7vw, 30px);
+        line-height: 1.25;
     }
 
     /* Ocultar navegación horizontal */
@@ -744,11 +871,37 @@ main p {
             linear-gradient(var(--verde), var(--verde)) left bottom / 11px 2px no-repeat;
     }
 
-    /* Opciones desplegables */
-    .menu-movil .menu-opciones {
-        min-width: 235px;
-        max-width: calc(100vw - 32px);
+    /* Espaciado inferior de Afiliación en celulares */
+    .catalogo-afiliacion .tarjeta-catalogo {
+        padding-bottom: 20px;
     }
+
+    /* Formularios: íconos alineados y tarjetas compactas */
+    .catalogo-formularios .tarjeta-catalogo {
+        padding: 14px 8px;
+        gap: 8px;
+    }
+
+    .catalogo-formularios .tarjeta-catalogo>svg {
+        margin-bottom: 0;
+    }
+
+    /* Última edición de Newsletters en celulares */
+    .enlace-newsletter-destacado {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .accion-newsletter {
+        flex-direction: row;
+        gap: 8px;
+    }
+
+    .accion-newsletter svg {
+        width: 22px;
+        height: 22px;
+    }
+
 }
 
 /* Ajustes adicionales para celulares pequeños */
@@ -787,4 +940,14 @@ main p {
         font-size: 11px;
         line-height: 13px;
     }
+}
+
+/* Contenido ampliado en computadora */
+@media (min-width: 901px) {
+
+    .documentacion-tramite,
+    .formulario-tramite {
+        max-width: 700px;
+    }
+
 }
